@@ -7,14 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="navbar">Only We Knows</div>
+    <div class="navbar">
+        <div>menu</div>
+        <label>Only We Knows</label>
+        <a href="howtouse.html">how to use</a>
+    </div>
     <div class="container">
         <div class="input-group">
             <input type="text" id="inputText" placeholder="Type here...">
         </div>
         <div class="entry">
             <input type="text" class="code" id="smallInput" placeholder="code">
-            <button class="submit-button" onclick="encryptCaesarCipher()">Submit</button>
+            <button class="submit-button" onclick="encryptCaesarCipher()">encript</button>
+            <button class="submit-button" onclick="decryptCaesarCipher()">decript</button>
         </div>
         <div class="input-group">
             <label for="outputText">Output Text:</label>
@@ -53,7 +58,11 @@ function copyOutputText() {
 
             const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             const lowerAlphabet = alphabet.toLowerCase();
-            const symbols = '!@#$%^&*()_+{}|:"<>?'
+            const symbols = '!@#$%^&*()_+{}|:"<>?'           
+
+            
+
+            
 
             let encryptedText = '';
 
@@ -82,6 +91,54 @@ function copyOutputText() {
             // Display the encrypted text in the output field
             document.getElementById('outputText').value = encryptedText;
         }
+
+
+        // Simple Caesar Cipher Encryption Program
+
+        // Function to encrypt plain text using a shift key
+        function decryptCaesarCipher() {
+            const plainText = document.getElementById('inputText').value;
+            const shift = parseInt(document.getElementById('smallInput').value, 10); // Convert shift to a number
+
+            const alphabet = 'ZYXWVUTSRQPONMLKJIHGFEDCBA';
+            const lowerAlphabet = alphabet.toLowerCase();
+            const symbols = '?><":|}{+_)(*&^%$#@!' 
+
+
+            
+
+            
+
+            let encryptedText = '';
+
+            for (let char of plainText) {
+                if (alphabet.includes(char)) {
+                    // Encrypt uppercase letters
+                    const index = alphabet.indexOf(char);
+                    const newIndex = (index + shift) % 26;
+                    encryptedText += alphabet[newIndex];
+                } else if (lowerAlphabet.includes(char)) {
+                    // Encrypt lowercase letters
+                    const index = lowerAlphabet.indexOf(char);
+                    const newIndex = (index + shift) % 26;
+                    encryptedText += lowerAlphabet[newIndex];
+                } else if(symbols.includes(char)){
+                    const index = symbols.indexOf(char);
+                    const newIndex = (index + shift) % 26;
+                    encryptedText += symbols[newIndex];
+                }
+                 else {
+                    // Leave non-alphabetic characters unchanged
+                    encryptedText += char;
+                }
+            }
+
+            // Display the encrypted text in the output field
+            document.getElementById('outputText').value = encryptedText;
+        }
+
+
+
     </script>
 </body>
 </html>
