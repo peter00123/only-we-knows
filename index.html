@@ -67,95 +67,156 @@ function pasteFromClipboard() {
     });
 }
 
-        function encryptCaesarCipher() {
+function encryptCaesarCipher() {
 
 
-            const plainText = document.getElementById('inputText').value;
-            
-              const shift = parseInt(document.getElementById('smallInput').value, 10); 
-            
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            const lowerAlphabet = alphabet.toLowerCase();
-            const symbols = '!@#$%^&*()_+{}|:"<>?'      ;     
+const plainText = document.getElementById('inputText').value;
+console.log(plainText)
 
-            
+  const shift = parseInt(document.getElementById('smallInput').value, 10); 
 
-            
+const alphabet1 = 'QWERTYUIOP';
+const alphabet2 = 'ASDFGHJKL';
+const alphabet3 = 'ZXCVBNM';
+const lowerAlphabet1 = alphabet1.toLowerCase();
+const lowerAlphabet2 = alphabet2.toLowerCase();
+const lowerAlphabet3 = alphabet3.toLowerCase();
+const symbols = '!@#$%^&*()_+{}|:"<>?';  
+const nums = '7894561230'
 
-            let encryptedText = '';
 
-            for (let char of plainText) {
-                if (alphabet.includes(char)) {
-                    
-                    const index = alphabet.indexOf(char);
-                    const newIndex = (index + shift) % 26;
-                    encryptedText += alphabet[newIndex];
-                } else if (lowerAlphabet.includes(char)) {
-                   
-                    const index = lowerAlphabet.indexOf(char);
-                    const newIndex = (index + shift) % 26;
-                    encryptedText += lowerAlphabet[newIndex];
-                } else if(symbols.includes(char)){
-                    const index = symbols.indexOf(char);
-                    const newIndex = (index + shift) % 26;
-                    encryptedText += symbols[newIndex];
-                }
-                 else {
-                     
-                    encryptedText += char;
-                }
-            }
 
-            
-            document.getElementById('outputText').value = encryptedText;
-        }
 
+
+
+
+let encryptedText = '';
+
+for (let char of plainText) {
+    if (alphabet1.includes(char)) {
+        
+        const index = alphabet1.indexOf(char);
+        const newIndex = (index + shift) % 10;
+        encryptedText += alphabet1[newIndex];
+    }
+    else if (alphabet2.includes(char)) {
+        
+        const index = alphabet2.indexOf(char);
+        const newIndex = (index + shift) % 9;
+        encryptedText += alphabet2[newIndex];
+    }
+    if (alphabet3.includes(char)) {
+        
+        const index = alphabet2.indexOf(char);
+        const newIndex = (index + shift) % 7;
+        encryptedText += alphabet2[newIndex];
+    }else if (lowerAlphabet1.includes(char)) {
+       
+        const index = lowerAlphabet1.indexOf(char);
+        const newIndex = (index + shift) % 10;
+        encryptedText += lowerAlphabet1[newIndex];
+    }else if (lowerAlphabet2.includes(char)) {
+       
+        const index = lowerAlphabet2.indexOf(char);
+        const newIndex = (index + shift) % 9;
+        encryptedText += lowerAlphabet2[newIndex];
+    }else if (lowerAlphabet3.includes(char)) {
+       
+        const index = lowerAlphabet3.indexOf(char);
+        const newIndex = (index + shift) % 7;
+        encryptedText += lowerAlphabet3[newIndex];
+    } //else if(symbols.includes(char)){
+      //  const index = symbols.indexOf(char);
+      //  const newIndex = (index + shift) % 26;
+      //  encryptedText += symbols[newIndex];
+      //  }
+     else {
+         
+        encryptedText += char;
+    }
+}
+
+
+//document.getElementById('outputText').value = encryptedText;
+console.log(encryptedText);
+document.getElementById('outputText').value = encryptedText;
+}
 
         
+function encryptCaesarCipher() {
+
+
+const plainText = document.getElementById('inputText').value;
+console.log(plainText)
+
+  const shift = parseInt(document.getElementById('smallInput').value, 10); 
+
+const alphabet1 = 'POIUYTREWQ';
+const alphabet2 = 'LKJHGFDSA';
+const alphabet3 = 'MNBVCXZ';
+const lowerAlphabet1 = alphabet1.toLowerCase();
+const lowerAlphabet2 = alphabet2.toLowerCase();
+const lowerAlphabet3 = alphabet3.toLowerCase();
+const symbols = '?><":|}{+_)(*&^%$#@!';  
+const nums = '0321654987';
+
+
+
+
+
+
+
+let encryptedText = '';
+
+for (let char of plainText) {
+    if (alphabet1.includes(char)) {
+        
+        const index = alphabet1.indexOf(char);
+        const newIndex = (index + shift) % 10;
+        encryptedText += alphabet1[newIndex];
+    }
+    else if (alphabet2.includes(char)) {
+        
+        const index = alphabet2.indexOf(char);
+        const newIndex = (index + shift) % 9;
+        encryptedText += alphabet2[newIndex];
+    }
+    if (alphabet3.includes(char)) {
+        
+        const index = alphabet2.indexOf(char);
+        const newIndex = (index + shift) % 7;
+        encryptedText += alphabet2[newIndex];
+    }else if (lowerAlphabet1.includes(char)) {
+       
+        const index = lowerAlphabet1.indexOf(char);
+        const newIndex = (index + shift) % 10;
+        encryptedText += lowerAlphabet1[newIndex];
+    }else if (lowerAlphabet2.includes(char)) {
+       
+        const index = lowerAlphabet2.indexOf(char);
+        const newIndex = (index + shift) % 9;
+        encryptedText += lowerAlphabet2[newIndex];
+    }else if (lowerAlphabet3.includes(char)) {
+       
+        const index = lowerAlphabet3.indexOf(char);
+        const newIndex = (index + shift) % 7;
+        encryptedText += lowerAlphabet3[newIndex];
+    }// else if(symbols.includes(char)){
+     //   const index = symbols.indexOf(char);
+     //   const newIndex = (index + shift) % 26;
+     //   encryptedText += symbols[newIndex];
+     //}
+     else {
          
-        function decryptCaesarCipher() {
-            const plainText = document.getElementById('inputText').value;
-            const shift = parseInt(document.getElementById('smallInput').value, 10);  
-
-            const alphabet = 'ZYXWVUTSRQPONMLKJIHGFEDCBA';
-            const lowerAlphabet = alphabet.toLowerCase();
-            const symbols = '?><":|}{+_)(*&^%$#@!' 
+        encryptedText += char;
+    }
+}
 
 
-            
-
-            
-
-            let encryptedText = '';
-
-            for (let char of plainText) {
-                if (alphabet.includes(char)) {
-                     
-                    const index = alphabet.indexOf(char);
-                    const newIndex = (index + shift) % 26;
-                    encryptedText += alphabet[newIndex];
-                } else if (lowerAlphabet.includes(char)) {
-                     
-                    const index = lowerAlphabet.indexOf(char);
-                    const newIndex = (index + shift) % 26;
-                    encryptedText += lowerAlphabet[newIndex];
-                } else if(symbols.includes(char)){
-                    const index = symbols.indexOf(char);
-                    const newIndex = (index + shift) % 26;
-                    encryptedText += symbols[newIndex];
-                }
-                 else {
-                    
-                    encryptedText += char;
-                }
-            }
-
-             
-            document.getElementById('outputText').value = encryptedText;
-        }
-
-
-
+//document.getElementById('outputText').value = encryptedText;
+console.log(encryptedText);
+document.getElementById('outputText').value = encryptedText;
+}
     </script>
 </body>
 </html>
