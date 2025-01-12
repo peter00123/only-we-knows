@@ -8,25 +8,26 @@ body {
     background-color:  #FCE4EC;
     text-align: center;
 }
+
 .navbar {
     width: 100%;
     background-color: #F06292;
     color: #ffffff;
-    padding: 20px;
-    padding-left: 10%;
+    padding: 30px;
     text-align: center;
-    display: flex;
-    justify-content: space-between;
 }
 .h1{
+    font-size: 50px;
+}
+.h2{
     font-size: 30px;
 }
 
 .h1 .h2{
     margin: 0;
     padding: 0;
+    color:  #880E4F;
 }
-
 .word{
     padding-left: 10px;
 }
@@ -36,15 +37,7 @@ body {
     margin-top: 20px;
     align-items: center;
     justify-content: space-evenly;
-    text-align: center;
-}
-
-
-.code{
-    background-color: #F7F7F7;
-    max-width: 50px;
-    border-radius: 10%;
-}
+    text-align: center;}
 
 .entry{
     display: flex;
@@ -54,23 +47,10 @@ body {
 .entry > * {
     margin: 10px;
 }
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-.input-group input[type="text"] {
-    width: 80%;
-    height: 90px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-.input-group input[type="text"][readonly] {
-    background-color: #f9f9f9;
-    cursor: not-allowed;
+.code{
+    background-color: #F7F7F7;
+    max-width: 50px;
+    border-radius: 10%;
 }
 .submit-button {
     background-color: #F06292;
@@ -91,9 +71,6 @@ body {
     font-size: 16px;
     cursor: pointer;
 }
-.submit-button:hover {
-    background-color: #357ABD;
-}
 
 textarea {
     width: 100%;
@@ -104,10 +81,6 @@ textarea {
     border-radius: 5px;
     resize: vertical; /* Allows vertical resizing */
 }
-
-/********************************/
-
-
 .output-container {
     position: relative;
     display: inline-block;
@@ -137,14 +110,23 @@ textarea {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
   }
-  
-  .copy-icon:hover {
-    background-color: #bbb;
-  }
 
-
-.heading{
-    color:  #880E4F;
-
-  }
-  
+/* Small screens (mobile phones) */
+@media (max-width: 480px) {
+    .navbar {
+      padding: 10px;
+      display: flex;
+      padding-left: 30px;
+    }
+    
+    .h1{
+        font-size: 30px;
+    }
+    .h2{
+        font-size: 20px;
+    }
+    .h1 .h2{
+        margin: 0;
+        padding: 0;
+    }
+}
