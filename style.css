@@ -84,3 +84,51 @@ height: 1hv;
 .submit-button:hover {
     background-color: #357ABD;
 }
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; /* Allows vertical resizing */
+}
+
+/********************************/
+
+
+.output-container {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+  }
+  
+  #outputTexts {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 14px;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .copy-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #ddd;
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .copy-icon:hover {
+    background-color: #bbb;
+  }
+  

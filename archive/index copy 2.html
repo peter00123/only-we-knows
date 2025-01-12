@@ -13,52 +13,37 @@
         <a href="howtouse.html">how to use</a>
     </div>
     <div class="container">
-        <!--div class="input-group">
+        <div class="input-group">
             <input type="text" id="inputText" placeholder="Type here...">
-            <textarea id="inputText" name="feedback" placeholder="Type your words here..." required></textarea><br>
-        </-div-->
-        <div class="output-container">
-            <div class="copy-icon" onclick="pasteFromClipboard()">📋</div>
-            <textarea type="text" id="inputText" placeholder="type here" ></textarea>
-          </div>
+        </div>
         <div class="entry">
             <input type="text" class="code" id="smallInput" placeholder="code">
             <button class="submit-button" onclick="encryptCaesarCipher()">encript</button>
             <button class="submit-button" onclick="decryptCaesarCipher()">decript</button>
         </div>
-        <!--div class="input-group">
+        <div class="input-group">
             <label for="outputText">Output Text:</label>
             <input type="text" id="outputText" readonly><br>
             <button class="copy-button" onclick="copyOutputText()">Copy Output</button>
-        </div-->
-        <div class="output-container">
-            <div class="copy-icon" onclick="copyToClipboard()">📋</div>
-            <textarea type="text" id="outputText" readonly>This is the content to copy.</textarea>
-          </div>
+        </div>
     </div>
 
     <script>
 
-function copyToClipboard() {
-  const outputField = document.getElementById("outputText");
-  outputField.select(); // Select the text
-  navigator.clipboard.writeText(outputField.value) // Copy text to clipboard
-    .then(() =>  console.log("copied")) //alert("Content copied!"))
-    .catch(() => console.log("failed")); // alert("Failed to copy!"));
-}
-
-
-////////////////
-function pasteFromClipboard() {
-  const outputField = document.getElementById("inputText");
-
-  navigator.clipboard.readText()
-    .then((text) => {
-      outputField.value = text; // Paste the clipboard text into the field
-    })
-    .catch(() => {
-      alert("Failed to paste text. Ensure the clipboard has content.");
-    });
+function copyOutputText() {
+  // Request permission to access the clipboard
+  navigator.permissions.query({ name: 'clipboard' }).then(permission => {
+    if (permission.state === 'granted') {
+      const outputText = document.getElementById('outputText').value;
+      navigator.clipboard.writeText(outputText).then(() => {
+        console.log('Output text copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    } else {
+      console.error('Permission to access the clipboard denied.');
+    }
+  });
 }
 
 

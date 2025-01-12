@@ -13,52 +13,37 @@
         <a href="howtouse.html">how to use</a>
     </div>
     <div class="container">
-        <!--div class="input-group">
+        <div class="input-group">
             <input type="text" id="inputText" placeholder="Type here...">
-            <textarea id="inputText" name="feedback" placeholder="Type your words here..." required></textarea><br>
-        </-div-->
-        <div class="output-container">
-            <div class="copy-icon" onclick="pasteFromClipboard()">📋</div>
-            <textarea type="text" id="inputText" placeholder="type here" ></textarea>
-          </div>
+        </div>
         <div class="entry">
             <input type="text" class="code" id="smallInput" placeholder="code">
             <button class="submit-button" onclick="encryptCaesarCipher()">encript</button>
-            <button class="submit-button" onclick="decryptCaesarCipher()">decript</button>
+            <button class="submit-button" onclick="decryptCaesarCipher(), finder()">decript</button>
         </div>
-        <!--div class="input-group">
+        <div class="input-group">
             <label for="outputText">Output Text:</label>
             <input type="text" id="outputText" readonly><br>
             <button class="copy-button" onclick="copyOutputText()">Copy Output</button>
-        </div-->
-        <div class="output-container">
-            <div class="copy-icon" onclick="copyToClipboard()">📋</div>
-            <textarea type="text" id="outputText" readonly>This is the content to copy.</textarea>
-          </div>
+        </div>
     </div>
 
     <script>
 
-function copyToClipboard() {
-  const outputField = document.getElementById("outputText");
-  outputField.select(); // Select the text
-  navigator.clipboard.writeText(outputField.value) // Copy text to clipboard
-    .then(() =>  console.log("copied")) //alert("Content copied!"))
-    .catch(() => console.log("failed")); // alert("Failed to copy!"));
-}
-
-
-////////////////
-function pasteFromClipboard() {
-  const outputField = document.getElementById("inputText");
-
-  navigator.clipboard.readText()
-    .then((text) => {
-      outputField.value = text; // Paste the clipboard text into the field
-    })
-    .catch(() => {
-      alert("Failed to paste text. Ensure the clipboard has content.");
-    });
+function copyOutputText() {
+  // Request permission to access the clipboard
+  navigator.permissions.query({ name: 'clipboard' }).then(permission => {
+    if (permission.state === 'granted') {
+      const outputText = document.getElementById('outputText').value;
+      navigator.clipboard.writeText(outputText).then(() => {
+        console.log('Output text copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    } else {
+      console.error('Permission to access the clipboard denied.');
+    }
+  });
 }
 
 
@@ -73,7 +58,7 @@ function pasteFromClipboard() {
 
             const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             const lowerAlphabet = alphabet.toLowerCase();
-            const symbols = '!@#$%^&*()_+{}|:"<>?'      ;     
+            const symbols = '!@#$%^&*()_+{}|:"<>?'  ;         
 
             
 
@@ -111,9 +96,9 @@ function pasteFromClipboard() {
         // Simple Caesar Cipher Encryption Program
 
         // Function to encrypt plain text using a shift key
-        function decryptCaesarCipher() {
+        function decryptCaesarCipher(shift) {
             const plainText = document.getElementById('inputText').value;
-            const shift = parseInt(document.getElementById('smallInput').value, 10); // Convert shift to a number
+            //const shift = parseInt(document.getElementById('smallInput').value, 10); // Convert shift to a number
 
             const alphabet = 'ZYXWVUTSRQPONMLKJIHGFEDCBA';
             const lowerAlphabet = alphabet.toLowerCase();
@@ -149,10 +134,26 @@ function pasteFromClipboard() {
             }
 
             // Display the encrypted text in the output field
-            document.getElementById('outputText').value = encryptedText;
+            //document.getElementById('outputText').value = encryptedText;
+            console.log(encryptedText)
         }
 
 
+        function finder(){
+            
+        // Initialize the counter
+let counter = 0;
+
+// Loop 30 times
+for (let i = 0; i < 300; i++) {
+    // Increment the counter
+    counter++;
+    //console.log(`Iteration ${i + 1}: Counter = ${counter}`);
+    shift = counter;
+    decryptCaesarCipher(shift);
+}
+        }
+//console.log(`Final Counter Value: ${counter}`);
 
     </script>
 </body>
