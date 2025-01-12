@@ -5,12 +5,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #cacaca;
+    background-color:  #FCE4EC;
     text-align: center;
 }
 .navbar {
     width: 100%;
-    background-color: #4C585B;
+    background-color: #F06292;
     color: #ffffff;
     padding: 20px;
     text-align: center;
@@ -19,31 +19,21 @@ body {
     display: flex;
     justify-content: space-between;
 }
-a{
-    color: #ffffff;
-    font-size:x-small;
-}
+
 
 .container {
-/*    background-color: #EFF3EA;
-border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-padding: 20px;
-width: 100%;
-height: 1hv;
-    max-width: 600px;
+    padding: 20px;
     margin-top: 20px;
     align-items: center;
     justify-content: space-evenly;
     text-align: center;
 }
-.input-group {
-    margin-bottom: 15px;
-}
+
 
 .code{
     background-color: #F7F7F7;
     max-width: 50px;
+    border-radius: 10%;
 }
 
 .entry{
@@ -73,7 +63,17 @@ height: 1hv;
     cursor: not-allowed;
 }
 .submit-button {
-    background-color: #4285F4;
+    background-color: #F06292;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button-un{
+    background-color: #b95073;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -130,5 +130,11 @@ textarea {
   
   .copy-icon:hover {
     background-color: #bbb;
+  }
+
+
+.heading{
+    color:  #880E4F;
+
   }
   

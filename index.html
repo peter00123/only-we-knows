@@ -8,36 +8,30 @@
 </head>
 <body>
     <div class="navbar">
-        <div>menu</div>
-        <label>Only We Knows</label>
-        <a href="howtouse.html">how to use</a>
+        <label class="heading">Only We Knows</label>
     </div>
+
     <div class="container">
-        <!--div class="input-group">
-            <input type="text" id="inputText" placeholder="Type here...">
-            <textarea id="inputText" name="feedback" placeholder="Type your words here..." required></textarea><br>
-        </-div-->
+        
         <div class="output-container">
             <div class="copy-icon" onclick="pasteFromClipboard()">📋</div>
             <textarea type="text" id="inputText" placeholder="type here" ></textarea>
-          </div>
+        </div>
+
         <div class="entry">
             <input type="text" class="code" id="smallInput" placeholder="code">
-            <button class="submit-button" onclick="encryptCaesarCipher()">encript</button>
-            <button class="submit-button" onclick="decryptCaesarCipher()">decript</button>
+            <button class="submit-button" onclick="encryptCaesarCipher()">lock</button>
+            <button class="submit-button-un" onclick="decryptCaesarCipher()">unlock</button>
         </div>
-        <!--div class="input-group">
-            <label for="outputText">Output Text:</label>
-            <input type="text" id="outputText" readonly><br>
-            <button class="copy-button" onclick="copyOutputText()">Copy Output</button>
-        </div-->
+        
         <div class="output-container">
             <div class="copy-icon" onclick="copyToClipboard()">📋</div>
-            <textarea type="text" id="outputText" readonly>This is the content to copy.</textarea>
+            <textarea type="text" id="outputText" placeholder="locked text" readonly></textarea>
           </div>
     </div>
 
     <script>
+//////////////////////.....................copy and paste......................??///////////////////?
 
 function copyToClipboard() {
   const outputField = document.getElementById("outputText");
@@ -47,30 +41,25 @@ function copyToClipboard() {
     .catch(() => console.log("failed")); // alert("Failed to copy!"));
 }
 
-
-////////////////
 function pasteFromClipboard() {
   const outputField = document.getElementById("inputText");
 
   navigator.clipboard.readText()
     .then((text) => {
-      outputField.value = text; // Paste the clipboard text into the field
+      outputField.value = text; 
     })
     .catch(() => {
       alert("Failed to paste text. Ensure the clipboard has content.");
     });
 }
 
-
-
-        
-        // Simple Caesar Cipher Encryption Program
-
-        // Function to encrypt plain text using a shift key
         function encryptCaesarCipher() {
-            const plainText = document.getElementById('inputText').value;
-            const shift = parseInt(document.getElementById('smallInput').value, 10); // Convert shift to a number
 
+
+            const plainText = document.getElementById('inputText').value;
+            
+              const shift = parseInt(document.getElementById('smallInput').value, 10); 
+            
             const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             const lowerAlphabet = alphabet.toLowerCase();
             const symbols = '!@#$%^&*()_+{}|:"<>?'      ;     
@@ -83,12 +72,12 @@ function pasteFromClipboard() {
 
             for (let char of plainText) {
                 if (alphabet.includes(char)) {
-                    // Encrypt uppercase letters
+                    
                     const index = alphabet.indexOf(char);
                     const newIndex = (index + shift) % 26;
                     encryptedText += alphabet[newIndex];
                 } else if (lowerAlphabet.includes(char)) {
-                    // Encrypt lowercase letters
+                   
                     const index = lowerAlphabet.indexOf(char);
                     const newIndex = (index + shift) % 26;
                     encryptedText += lowerAlphabet[newIndex];
@@ -98,22 +87,21 @@ function pasteFromClipboard() {
                     encryptedText += symbols[newIndex];
                 }
                  else {
-                    // Leave non-alphabetic characters unchanged
+                     
                     encryptedText += char;
                 }
             }
 
-            // Display the encrypted text in the output field
+            
             document.getElementById('outputText').value = encryptedText;
         }
 
 
-        // Simple Caesar Cipher Encryption Program
-
-        // Function to encrypt plain text using a shift key
+        
+         
         function decryptCaesarCipher() {
             const plainText = document.getElementById('inputText').value;
-            const shift = parseInt(document.getElementById('smallInput').value, 10); // Convert shift to a number
+            const shift = parseInt(document.getElementById('smallInput').value, 10);  
 
             const alphabet = 'ZYXWVUTSRQPONMLKJIHGFEDCBA';
             const lowerAlphabet = alphabet.toLowerCase();
@@ -128,12 +116,12 @@ function pasteFromClipboard() {
 
             for (let char of plainText) {
                 if (alphabet.includes(char)) {
-                    // Encrypt uppercase letters
+                     
                     const index = alphabet.indexOf(char);
                     const newIndex = (index + shift) % 26;
                     encryptedText += alphabet[newIndex];
                 } else if (lowerAlphabet.includes(char)) {
-                    // Encrypt lowercase letters
+                     
                     const index = lowerAlphabet.indexOf(char);
                     const newIndex = (index + shift) % 26;
                     encryptedText += lowerAlphabet[newIndex];
@@ -143,12 +131,12 @@ function pasteFromClipboard() {
                     encryptedText += symbols[newIndex];
                 }
                  else {
-                    // Leave non-alphabetic characters unchanged
+                    
                     encryptedText += char;
                 }
             }
 
-            // Display the encrypted text in the output field
+             
             document.getElementById('outputText').value = encryptedText;
         }
 
